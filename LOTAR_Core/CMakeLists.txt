@@ -7,6 +7,7 @@ find_package(OpenCV REQUIRED)
 
 
 add_executable(${CORE_PROJECT_NAME}
+	src/Tester.cpp
 	src/main.cpp
 )
 
@@ -14,3 +15,7 @@ add_executable(${CORE_PROJECT_NAME}
 target_link_libraries(${CORE_PROJECT_NAME} PRIVATE ${OpenCV_LIBS})
 target_include_directories(${CORE_PROJECT_NAME} PRIVATE includes)
 target_include_directories(${CORE_PROJECT_NAME} PRIVATE src)
+
+
+
+

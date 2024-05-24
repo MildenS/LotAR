@@ -104,15 +104,15 @@ void Tester::test(DescriptorsType descrType)
 	std::vector<TestUnit> testUnits;
 	std::string descrTypeString;
 	if (descrType == DescriptorsType::ORB)
-		descrTypeString = "_ORB_log_";
+		descrTypeString = "_ORB_USUALTEST_log_";
 	else if (descrType == DescriptorsType::SIFT)
-		descrTypeString = "_SIFT_log_";
+		descrTypeString = "_SIFT_USUALTEST_log_";
 	else if (descrType == DescriptorsType::KAZE)
-		descrTypeString = "_KAZE_log_";
+		descrTypeString = "_KAZE_USUALTEST_log_";
 	else if (descrType == DescriptorsType::AKAZE)
-		descrTypeString = "_AKAZE_log_";
+		descrTypeString = "_AKAZE_USUALTEST_log_";
 	else if (descrType == DescriptorsType::BRISK)
-		descrTypeString = "_BRISK_log_";
+		descrTypeString = "_BRISK_USUALTEST_log_";
 	else
 	{
 		std::cout << "Incorrect description type im method test\n";
@@ -200,6 +200,7 @@ float Tester::match(Exhibit& exhibit, TestUnit& test_unit, DescriptorsType descr
 		float matchCoeff = good_matches / (float)knn_matches.size();
 		if (matchCoeff > bestMatchCoeff)
 			bestMatchCoeff = matchCoeff;
+		knn_matches.clear();
 	}
 	return bestMatchCoeff;
 }
@@ -451,6 +452,8 @@ void Tester::testUnited(DescriptorsType descrType)
 		descrTypeString = "_KAZE_log_United_";
 	else if (descrType == DescriptorsType::AKAZE)
 		descrTypeString = "_AKAZE_log_United_";
+	else if (descrType == DescriptorsType::BRISK)
+		descrTypeString = "_BRISK_log_United_";
 	else
 	{
 		std::cout << "Incorrect description type im method test\n";
@@ -530,12 +533,12 @@ void Tester::TestUnited()
 	testUnited(DescriptorsType::ORB);
 	std::cout << "Finish ORB testing\n";
 
-	std::cout << "Start SIFT testing\n";
-	//test(DescriptorsType::SIFT);
-	std::cout << "Finish SIFT testing\n";
+	std::cout << "Start BRISK testing\n";
+	testUnited(DescriptorsType::BRISK);
+	std::cout << "Finish BRISK testing\n";
 
 	std::cout << "Start AKAZE testing\n";
-	//test(DescriptorsType::AKAZE);
+	testUnited(DescriptorsType::AKAZE);
 	std::cout << "Finish AKAZE testing\n";
 }
 
@@ -549,13 +552,15 @@ void Tester::testConcatDescr(DescriptorsType descrType)
 	std::vector<TestUnit> testUnits;
 	std::string descrTypeString;
 	if (descrType == DescriptorsType::ORB)
-		descrTypeString = "_ORB_log_United_";
+		descrTypeString = "_ORB_log_ConcatDescr_";
 	else if (descrType == DescriptorsType::SIFT)
-		descrTypeString = "_SIFT_log_United_";
+		descrTypeString = "_SIFT_log_ConcatDescr_";
 	else if (descrType == DescriptorsType::KAZE)
-		descrTypeString = "_KAZE_log_United_";
+		descrTypeString = "_KAZE_log_ConcatDescr_";
 	else if (descrType == DescriptorsType::AKAZE)
-		descrTypeString = "_AKAZE_log_United_";
+		descrTypeString = "_AKAZE_log_ConcatDescr_";
+	else if (descrType == DescriptorsType::BRISK)
+		descrTypeString = "_BRISK_log_ConcatDescr_";
 	else
 	{
 		std::cout << "Incorrect description type im method test\n";
@@ -701,11 +706,11 @@ void Tester::TestConcatDescr()
 	testConcatDescr(DescriptorsType::ORB);
 	std::cout << "Finish ORB testing\n";
 
-	std::cout << "Start SIFT testing\n";
-	//test(DescriptorsType::SIFT);
-	std::cout << "Finish SIFT testing\n";
+	std::cout << "Start BRISK testing\n";
+	testConcatDescr(DescriptorsType::BRISK);
+	std::cout << "Finish BRISK testing\n";
 
 	std::cout << "Start AKAZE testing\n";
-	//test(DescriptorsType::AKAZE);
+	testConcatDescr(DescriptorsType::AKAZE);
 	std::cout << "Finish AKAZE testing\n";
 }

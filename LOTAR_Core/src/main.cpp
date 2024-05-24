@@ -11,13 +11,15 @@ using namespace cv;
 
 int main()
 {
-    std::string test_name = "DebugUsualTest";
+    std::string test_name = "Small_Test_pictures_1_";
     std::vector<std::string> trainPaths;
-    trainPaths.push_back("E:\\museum_dataset\\fast_test\\train");
+    trainPaths.push_back("E:\\museum_dataset\\pictures\\train");
     std::vector<std::string> testPaths;
-    testPaths.push_back("E:\\museum_dataset\\fast_test\\test");
+    testPaths.push_back("E:\\museum_dataset\\pictures\\test");
     Tester tester(test_name, trainPaths, testPaths);
+    tester.Test();
     tester.TestConcatDescr();
+    tester.TestUnited();
     //std::cout << cv::getBuildInformation();
     return 0;
 }
